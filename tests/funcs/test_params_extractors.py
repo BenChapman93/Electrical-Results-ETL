@@ -8,7 +8,7 @@ class TestSampleNumberExtractor(object):
         
         expected = 20
         actual = sample_number_extractor(file)
-        message = f"Expected: 20, Actual: {actual}"
+        message = f"Expected: {expected}, Actual: {actual}"
 
         assert actual == expected, message
 
