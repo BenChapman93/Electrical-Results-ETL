@@ -35,7 +35,10 @@ def user_extractor(electrical_data_file):
     with open(electrical_data_file) as file:
         lines = file.readlines()
         try:
-            return lines[4].split()[1]
+            if lines[4].split()[0] == 'User:':
+                return lines[4].split()[1]
+            else:
+                return None
         except:
             return None
     
