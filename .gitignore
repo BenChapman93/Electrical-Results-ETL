@@ -1,2 +1,3 @@
 mock_files/
 jupyter/
+__pycache__/
