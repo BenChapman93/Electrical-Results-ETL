@@ -6,7 +6,7 @@ class TestCompletedChecker(object):
         
         file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
         
-        expected = "C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        expected = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
         actual = completed_checker(file)
         message = f"Expected: {expected}, Actual: {actual}"
 
