@@ -16,4 +16,6 @@ def txt_to_df(file):
         columns = [str(i) for i in range(1, sample_number_extractor(file) + 1)]
         columns.insert(0, 'Time')
 
-        return pd.DataFrame(data, columns= columns)
+        df = pd.DataFrame(data, columns= columns).apply(pd.to_numeric)
+        
+        return df
