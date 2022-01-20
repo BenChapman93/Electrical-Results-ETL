@@ -17,5 +17,6 @@ def txt_to_df(file):
         columns.insert(0, 'Time')
 
         df = pd.DataFrame(data, columns= columns).apply(pd.to_numeric)
+        df.insert(0, 'File', file.split('\\')[-1])
         
         return df
