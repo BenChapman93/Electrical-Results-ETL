@@ -14,6 +14,19 @@ class TempFile():
     def __exit__(self, types, value, traceback):
         os.remove(self.temp_file_path)
 
+def get_txt_files(path):
+    """Generates a list of absolute file paths corresponding to files withing the path,
+       provided they end in .txt.        
+
+    Args:
+        path (str): Absolute path to the directory containing files.
+
+    Returns:
+        list: A list containing absolute file paths.
+    """
+
+    return [os.path.abspath(file) for file in os.listdir(path) if file.endswith('.txt')]
+
 def temp_file_path_generator(file_path):
     """Function to generate a temporary file path for any .txt file passed.
 
