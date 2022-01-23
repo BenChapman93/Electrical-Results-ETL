@@ -95,13 +95,15 @@ def metrics_generator(df):
                  max_consec_sub_1MΩ, time_sub_1MΩ, minimum_value, maximum_value, geomean, last_four_geomean,
                 first_four_geomean, stdev]
     
+    file_name = df['File'].iloc[0]
     df = df[df.columns[2:]]
     
-    data = []
+    data = [list(df.apply(func)) for func in func_list]    
+    channels = [str(i) for i in range(1,len(df.columns) + 1)]
     
-    for func in func_list:
-        data.append(list(df.apply(func)))
+    metrics_df = pd.DataFrame(data).T
+    metrics_df.columns = [func.__name__ for func in func_list]
+    metrics_df.insert(0, 'File', file_name)
+    metrics_df.insert(1, 'Channel', channels)
         
-    columns = [str(i) for i in range(1,21)]
-        
-    return pd.DataFrame(data, columns= columns)
+    return metrics_df
