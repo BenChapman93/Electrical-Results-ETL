@@ -119,10 +119,36 @@ def pass_rate_calculator(df, threshold= 1000000):
     Returns:
         float: % pass rate
     """
-    
+    if 'File' in df.columns:
+        df = df[[col for col in df.columns if col != 'Time' and col != 'File']]
+
     df = df[df.columns[2:]]
     series = df.apply(last_four_geomean)
     
     passed = len(series[series > threshold])
 
     return (passed/len(series)) * 100
+
+def summary_generator(df):
+    """Takes in a Pandas DataFrame containing raw resistance data and returns a tuple containing summary data
+
+    Args:
+        df (pandas.DataFrame): DataFrame containing raw resistance data
+
+    Returns:
+        tuple: Tuple containing summary statistics
+    """
+    
+    df = df[[col for col in df.columns if col != 'Time' and col != 'File']]
+    
+    one_Mohms_passrate = pass_rate_calculator(df)
+    ten_Mohms_passrate = pass_rate_calculator(df, threshold=10000000)
+    onehundred_Mohms_passrate = pass_rate_calculator(df, threshold=100000000)
+    
+    values = df.values
+    
+    maximum = values.max()
+    minimum = values.min()
+    average = values.mean()
+    
+    return (average, maximum, minimum, one_Mohms_passrate, ten_Mohms_passrate, onehundred_Mohms_passrate)
