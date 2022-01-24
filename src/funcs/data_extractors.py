@@ -96,14 +96,31 @@ def metrics_generator(df):
                 first_four_geomean, stdev]
     
     file_name = df['File'].iloc[0]
-    df = df[df.columns[2:]]
-    
-    data = [list(df.apply(func)) for func in func_list]    
+    df = df[df.columns[2:]]   
     channels = [str(i) for i in range(1,len(df.columns) + 1)]
     
-    metrics_df = pd.DataFrame(data).T
-    metrics_df.columns = [func.__name__ for func in func_list]
+    metrics_df = df.agg([func for func in func_list]).T
     metrics_df.insert(0, 'File', file_name)
     metrics_df.insert(1, 'Channel', channels)
+    metrics_df.reset_index(drop= True, inplace= True)
         
     return metrics_df
+
+def pass_rate_calculator(df, threshold= 1000000):
+    """Takes in a Pandas DataFrame containing raw resistance data and returns an overall pass rate
+       (referenced against the threshold value)
+
+    Args:
+        df (pandas.DataFrame): DataFrame containing raw resistance data
+        threshold (int, optional): Defaults to 1000000.
+
+    Returns:
+        float: % pass rate
+    """
+    
+    df = df[df.columns[2:]]
+    series = df.apply(last_four_geomean)
+    
+    passed = len(series[series > threshold])
+
+    return (passed/len(series)) * 100
