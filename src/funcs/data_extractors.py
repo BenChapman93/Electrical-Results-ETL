@@ -1,7 +1,8 @@
 import pandas as pd
 import more_itertools as mit
 from scipy.stats.mstats import gmean
-from src.funcs.params_extractors import sample_number_extractor
+import os
+from src.funcs.params_extractors import sample_number_extractor, user_extractor, voltage_extractor, get_mod_date_of_file, duration_min_extractor
 
 def total_measurements(column):
     
@@ -130,7 +131,8 @@ def pass_rate_calculator(df, threshold= 1000000):
     return (passed/len(series)) * 100
 
 def summary_generator(df):
-    """Takes in a Pandas DataFrame containing raw resistance data and returns a tuple containing summary data
+    """Takes in a Pandas DataFrame containing raw resistance data and returns a tuple containing summary data -
+       ready for insertion into database.
 
     Args:
         df (pandas.DataFrame): DataFrame containing raw resistance data
@@ -152,3 +154,25 @@ def summary_generator(df):
     average = values.mean()
     
     return (average, maximum, minimum, one_Mohms_passrate, ten_Mohms_passrate, onehundred_Mohms_passrate)
+
+def parameters_generator(file):
+    """Returns a tuple of all test parameters associated with the file -
+       ready for insertion into database.
+
+    Args:
+        file (str): file path
+
+    Returns:
+        Tuple: containings data to be inserted into the database
+    """
+    
+    file_path = os.path.abspath(file)
+    file_name = file_path.split('\\')[-1]
+    
+    samples = sample_number_extractor(file_path)
+    user = user_extractor(file_path)
+    voltage = voltage_extractor(file_path)
+    duration = duration_min_extractor(file_path)
+    date = get_mod_date_of_file(file_path)
+    
+    return (file_name, samples, user, voltage, duration, date)
