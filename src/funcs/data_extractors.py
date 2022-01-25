@@ -123,9 +123,7 @@ def pass_rate_calculator(df, threshold= 1000000):
     if 'File' in df.columns:
         df = df[[col for col in df.columns if col != 'Time' and col != 'File']]
 
-    df = df[df.columns[2:]]
     series = df.apply(last_four_geomean)
-    
     passed = len(series[series > threshold])
 
     return (passed/len(series)) * 100
