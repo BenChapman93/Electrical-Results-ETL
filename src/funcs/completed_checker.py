@@ -25,7 +25,7 @@ def get_txt_files(path):
         list: A list containing absolute file paths.
     """
 
-    return [os.path.abspath(file) for file in os.listdir(path) if file.endswith('.txt')]
+    return [os.path.join(path ,file) for file in os.listdir(path) if file.endswith('.txt')]
 
 def temp_file_path_generator(file_path):
     """Function to generate a temporary file path for any .txt file passed.
