@@ -84,7 +84,7 @@ def txt_to_df(file):
     with open(file, "r") as f:
         lines = f.readlines()
         data = [row.split() for row in lines[7:]]
-        columns = [str(i) for i in range(1, sample_number_extractor(file) + 1)]
+        columns = [f'Channel_{str(i)}' for i in range(1, sample_number_extractor(file) + 1)]
         columns.insert(0, 'Time')
 
         df = pd.DataFrame(data, columns= columns).apply(pd.to_numeric)
