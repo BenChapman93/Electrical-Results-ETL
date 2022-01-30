@@ -25,10 +25,39 @@ class Database(object):
 
     def insert_raw(self, df):
 
+        self.create_table()
         self.cur.execute('SELECT DISTINCT File FROM raw_data')
         result = self.cur.fetchall()
+        existing_files = [file[0] for file in result]
 
-        return result
+        file = df['File'][0]
+
+        if file not in existing_files:
+            df.to_sql('raw_data', self.connection, index= False, if_exists= 'append')
+        else:
+            print(f'{file} already in the database.')
+
+    def insert_metrics(self, metrics_df):
+
+        self.create_table()
+        self.cur.execute("SELECT name FROM PRAGMA_TABLE_INFO('metrics_data')")
+        col_result = self.cur.fetchall()
+        columns = [col[0] for col in col_result]
+
+        metrics_df.columns = columns
+
+        self.cur.execute('SELECT DISTINCT File FROM metrics_data')
+        file_result = self.cur.fetchall()
+        existing_files = [file[0] for file in file_result]
+
+        file = metrics_df['File'][0]
+
+        if file not in existing_files:
+            metrics_df.to_sql('metrics_data', self.connection, index= False, if_exists= 'append')
+
+        else:
+            print(f'{file} already in database')
+
 
     def create_table(self):
         """create a database table if it does not exist already"""
