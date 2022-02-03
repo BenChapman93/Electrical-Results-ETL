@@ -138,7 +138,7 @@ def summary_generator(df):
     Returns:
         tuple: Tuple containing summary statistics
     """
-    
+    file = df['File'].iloc[0]
     df = df[[col for col in df.columns if col != 'Time' and col != 'File']]
     
     one_Mohms_passrate = pass_rate_calculator(df)
@@ -151,7 +151,7 @@ def summary_generator(df):
     minimum = values.min()
     average = values.mean()
     
-    return (average, maximum, minimum, one_Mohms_passrate, ten_Mohms_passrate, onehundred_Mohms_passrate)
+    return (file, average, maximum, minimum, one_Mohms_passrate, ten_Mohms_passrate, onehundred_Mohms_passrate)
 
 def parameters_generator(file):
     """Returns a tuple of all test parameters associated with the file -
