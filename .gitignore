@@ -1,3 +1,5 @@
 mock_files/
 jupyter/
 __pycache__/
+logs/
+plugins/
