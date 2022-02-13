@@ -61,7 +61,6 @@ with DAG(
             op_args=[target_dir],
             python_callable= eligible_files,
             dag= dag
-
         )
 
         count_files = BranchPythonOperator(
