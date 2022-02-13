@@ -3,3 +3,4 @@ jupyter/
 __pycache__/
 logs/
 plugins/
+.env
