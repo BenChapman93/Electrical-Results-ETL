@@ -42,6 +42,21 @@ def process_files(ti):
 
     print(f'{files} are eligible for processing')
 
+    for file in files:
+
+        df = txt_to_df(file)
+        metrics_df = metrics_generator(df)
+        summary_data = summary_generator(df)
+        parameters = parameters_generator(file)
+
+        try:
+            with Database() as db:
+                db.insert_parameters(parameters)
+                db.insert_summary(summary_data)
+                db.insert_metrics(metrics_df)
+                db.insert_raw(df)
+        except Exception as e:
+            print(f'The file: {file} filed to load to the database due to: {e}')
 
 with DAG(
     'elect_test_etl',

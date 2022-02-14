@@ -2,7 +2,7 @@ import sqlite3
 
 class Database(object):
     
-    DB_LOCATION = "dummy.db"
+    DB_LOCATION = "/opt/airflow/database/results.db"
 
     def __init__(self):
         """Initialize db class variables"""
