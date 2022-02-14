@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-
+import shutil
 from src.funcs.database import Database
 from src.funcs.completed_checker import get_txt_files, completed_checker
 from src.funcs.params_extractors import sample_number_extractor, voltage_extractor, duration_min_extractor, user_extractor, get_mod_date_of_file
@@ -44,6 +44,7 @@ def process_files(ti):
 
     for file in files:
 
+        file_name = file.split('/')[-1]
         df = txt_to_df(file)
         metrics_df = metrics_generator(df)
         summary_data = summary_generator(df)
@@ -57,6 +58,9 @@ def process_files(ti):
                 db.insert_raw(df)
         except Exception as e:
             print(f'The file: {file} filed to load to the database due to: {e}')
+            # add a line to move file that have caused an error to a separate directory
+        else:
+            shutil.move(file, processed_dir + '/' + file_name)
 
 with DAG(
     'elect_test_etl',
