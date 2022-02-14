@@ -62,6 +62,8 @@ x-airflow-common:
     - ./logs:/opt/airflow/logs
     - ./plugins:/opt/airflow/plugins
     - ./src:/opt/airflow/src
+    - /home/ben/Documents/electrical_data/new_files:/opt/airflow/new_files
+    - /home/ben/Documents/electrical_data/processed:/opt/airflow/processed
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on

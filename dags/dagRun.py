@@ -9,8 +9,8 @@ from airflow.models import DAG
 from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.operators.bash import BashOperator
 
-target_dir = "C:/Users/ben.chapman/Desktop/Udemy/Electrical_Results_ETL/mock_files"
-processed_dir = ''
+target_dir = '/opt/airflow/new_files'
+processed_dir = '/opt/airflow/processed'
 
 default_args = {'owner': 'BC',
                 'depends_on_past': False,
