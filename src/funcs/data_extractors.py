@@ -88,7 +88,7 @@ def txt_to_df(file):
         columns.insert(0, 'Time')
 
         df = pd.DataFrame(data, columns= columns).apply(pd.to_numeric)
-        df.insert(0, 'File', file.split('\\')[-1])
+        df.insert(0, 'File', file.split('/')[-1])
         
         return df
 
@@ -165,7 +165,7 @@ def parameters_generator(file):
     """
     
     file_path = os.path.abspath(file)
-    file_name = file_path.split('\\')[-1]
+    file_name = file_path.split('/')[-1]
     
     samples = sample_number_extractor(file_path)
     user = user_extractor(file_path)
