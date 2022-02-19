@@ -61,23 +61,23 @@ class Database(object):
 
     def create_table(self):
         """create a database table if it does not exist already"""
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS raw_data (File text ,Time number, Channel_1 number, Channel_2 number, 
-                                                    Channel_3 number, Channel_4 number, Channel_5 number, Channel_6 number, 
-                                                    Channel_7 number, Channel_8 number, Channel_9 number, Channel_10 number, 
-                                                    Channel_11 number, Channel_12 number, Channel_13 number, Channel_14 number, 
-                                                    Channel_15 number, Channel_16 number, Channel_17 number, Channel_18 number, 
-                                                    Channel_19 number , Channel_20 number)""")
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS raw_data (File text ,Time INTEGER, Channel_1 INTEGER, Channel_2 INTEGER, 
+                                                    Channel_3 INTEGER, Channel_4 INTEGER, Channel_5 INTEGER, Channel_6 INTEGER, 
+                                                    Channel_7 INTEGER, Channel_8 INTEGER, Channel_9 INTEGER, Channel_10 INTEGER, 
+                                                    Channel_11 INTEGER, Channel_12 INTEGER, Channel_13 INTEGER, Channel_14 INTEGER, 
+                                                    Channel_15 INTEGER, Channel_16 INTEGER, Channel_17 INTEGER, Channel_18 INTEGER, 
+                                                    Channel_19 INTEGER , Channel_20 INTEGER)""")
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS metrics_data (File text, Channel number, Total_measurements number, 
-                                                                        Initial_Reading number, Final_Reading number, Total_sub_Onehundred_MOhms number, 
-                                                                        Total_sub_Ten_MOhms number, Total_sub_One_MOhms number, Max_consecutive_sub_One_MOhms_readings number, 
-                                                                        Total_time_sub_One_MOhms number, Minimum_value number, Maximum_value number, Geomean_all_values number, 
-                                                                        Geomean_last_four_values number, Geomean_first_four_values number, STDEV number)""")
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS metrics_data (File text, Channel INTEGER, Total_measurements INTEGER, 
+                                                                        Initial_Reading INTEGER, Final_Reading INTEGER, Total_sub_Onehundred_MOhms INTEGER, 
+                                                                        Total_sub_Ten_MOhms INTEGER, Total_sub_One_MOhms INTEGER, Max_consecutive_sub_One_MOhms_readings INTEGER, 
+                                                                        Total_time_sub_One_MOhms INTEGER, Minimum_value INTEGER, Maximum_value INTEGER, Geomean_all_values INTEGER, 
+                                                                        Geomean_last_four_values INTEGER, Geomean_first_four_values INTEGER, STDEV INTEGER)""")
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS summary_data (File text UNIQUE, Average number, Maximum number, Minimum number, 
-                                                                    One_Mohms_passrate number, Ten_Mohms_passrate number, Onehundred_Mohms_passrate number) """)
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS summary_data (File text UNIQUE, Average INTEGER, Maximum INTEGER, Minimum INTEGER, 
+                                                                    One_Mohms_passrate INTEGER, Ten_Mohms_passrate INTEGER, Onehundred_Mohms_passrate INTEGER) """)
 
-        self.cur.execute("""CREATE TABLE IF NOT EXISTS parameters (File text UNIQUE, Total_Channels number, User text, Voltage number, duration number, Date text) """)
+        self.cur.execute("""CREATE TABLE IF NOT EXISTS parameters (File text UNIQUE, Total_Channels INTEGER, User text, Voltage INTEGER, duration INTEGER, Date text) """)
 
 
     def __enter__(self):
