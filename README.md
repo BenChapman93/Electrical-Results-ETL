@@ -23,3 +23,13 @@ From the Graph View we can see the DAG running through each task, according to t
 3. **any_files_branch:** A list of eligible files are pulled in *via* Airflow's XCom feature. Path to take is determined by the number of eligible files.
 4. **process_files:** Eligible files are ingested - raw data is cleaned and useful metrics are calculated. Results are stored in the database and the raw txt file is relocated.
 5. **no_files:** Only runs if there are no eligible files for process.
+
+## Metabase Dashboard
+
+Metabase is an open source data visualisation tool primarily used by analysts for business intelligence. 
+
+![Metabase gif p1](https://user-images.githubusercontent.com/45105631/155730627-f06bb96f-e367-42da-9f13-5a18373b46d9.gif)
+
+This project uses its interactive dashboarding to link dashboards, compare datasets and export results of interest.
+
+![Metabase gif p2](https://user-images.githubusercontent.com/45105631/155732670-88661d12-5c72-4a01-99da-eb8540df8eb8.gif)
