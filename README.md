@@ -21,7 +21,7 @@ This ETL process is designed to check for completed test files, extract their co
  
  Clone the repository to your desired location.
  
- Should you wish to alter the location of any directories, such as the target directory (where new results files land), you can change the mount location in the Compose file ([docker-compose.yaml](https://github.com/BenChapman93/Electrical-Results-ETL/blob/master/docker-compose.yaml)).
+ Should you wish to alter the location of any mounted directories, such as the target directory (where new results files land), you can change the mount location in the Compose file ([docker-compose.yaml](https://github.com/BenChapman93/Electrical-Results-ETL/blob/master/docker-compose.yaml)).
  
  In the repository directory, run the following command:
  ```
