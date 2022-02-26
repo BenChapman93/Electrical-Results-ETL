@@ -12,6 +12,11 @@ This ETL process is designed to check for completed test files, extract their co
  
  This project is configured for quite a unique usecase; however, should anyone wish to test its features, these are the steps to do so.
  
+ ### Prerequisites
+ 
+ - [Docker](https://docs.docker.com/get-docker/)
+ - [Docker Compose](https://docs.docker.com/compose/)
+ 
  ### Airflow
  
  Clone the repository to your desired location.
