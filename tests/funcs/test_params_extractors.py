@@ -4,7 +4,7 @@ class TestSampleNumberExtractor(object):
 
     def test_with_clean_salt_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        file = "path/to/clean_salt_file.txt"
         
         expected = 20
         actual = sample_number_extractor(file)
@@ -14,7 +14,7 @@ class TestSampleNumberExtractor(object):
 
     def test_with_clean_tapwater_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
         
         expected = 20
         actual = sample_number_extractor(file)
@@ -24,7 +24,7 @@ class TestSampleNumberExtractor(object):
 
     def test_with_empty_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\empty_file.txt"
+        file = "path/to/empty_file.txt"
         
         expected = None
         actual = sample_number_extractor(file)
@@ -34,7 +34,7 @@ class TestSampleNumberExtractor(object):
 
     def test_with_clean_random_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\random_text.txt"
+        file = "path/to/random_file.txt"
         
         expected = None
         actual = sample_number_extractor(file)
@@ -46,7 +46,7 @@ class TestVoltageExtractor(object):
 
     def test_with_clean_salt_file(self):
 
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        file = "path/to/clean_salt_file.txt"
         
         expected = 4.3
         actual = voltage_extractor(file)
@@ -56,7 +56,7 @@ class TestVoltageExtractor(object):
 
     def test_with_clean_tapwater_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
         
         expected = 8.0
         actual = voltage_extractor(file)
@@ -66,7 +66,7 @@ class TestVoltageExtractor(object):
 
     def test_with_empty_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\empty_file.txt"
+        file = "path/to/empty_file.txt"
         
         expected = None
         actual = voltage_extractor(file)
@@ -76,7 +76,7 @@ class TestVoltageExtractor(object):
 
     def test_with_clean_random_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\random_text.txt"
+        file = "path/to/random_file.txt"
         
         expected = None
         actual = voltage_extractor(file)
@@ -88,7 +88,7 @@ class TestDurationMinExtractor(object):
 
     def test_with_clean_salt_file(self):
 
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        file = "path/to/clean_salt_file.txt"
         
         expected = 60
         actual = duration_min_extractor(file)
@@ -98,7 +98,7 @@ class TestDurationMinExtractor(object):
 
     def test_with_clean_tapwater_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
         
         expected = 13
         actual = duration_min_extractor(file)
@@ -108,7 +108,7 @@ class TestDurationMinExtractor(object):
 
     def test_with_empty_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\empty_file.txt"
+        file = "path/to/empty_file.txt"
         
         expected = None
         actual = duration_min_extractor(file)
@@ -118,7 +118,7 @@ class TestDurationMinExtractor(object):
 
     def test_with_clean_random_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\random_text.txt"
+        file = "path/to/random_file.txt"
         
         expected = None
         actual = duration_min_extractor(file)
@@ -130,7 +130,7 @@ class TestUserExtractor(object):
 
     def test_with_clean_salt_file(self):
 
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        file = "path/to/clean_salt_file.txt"
         
         expected = 'BJC'
         actual = user_extractor(file)
@@ -140,7 +140,7 @@ class TestUserExtractor(object):
 
     def test_with_clean_tapwater_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
         
         expected = 'BJC'
         actual = user_extractor(file)
@@ -150,7 +150,7 @@ class TestUserExtractor(object):
 
     def test_with_empty_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\empty_file.txt"
+        file = "path/to/empty_file.txt"
         
         expected = None
         actual = user_extractor(file)
@@ -160,7 +160,7 @@ class TestUserExtractor(object):
 
     def test_with_clean_random_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\random_text.txt"
+        file = "path/to/random_file.txt"
         
         expected = None
         actual = user_extractor(file)
@@ -172,7 +172,7 @@ class TestGetModDateOfFile(object):
 
     def test_with_clean_salt_file(self):
 
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        file = "path/to/clean_salt_file.txt"
         
         expected = '28-04-2021'
         actual = get_mod_date_of_file(file)
@@ -182,7 +182,7 @@ class TestGetModDateOfFile(object):
 
     def test_with_clean_tapwater_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
         
         expected = '28-04-2021'
         actual = get_mod_date_of_file(file)
@@ -192,7 +192,7 @@ class TestGetModDateOfFile(object):
 
     def test_with_empty_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\empty_file.txt"
+        file = "path/to/empty_file.txt"
         
         expected = '10-01-2022'
         actual = get_mod_date_of_file(file)
@@ -202,7 +202,7 @@ class TestGetModDateOfFile(object):
 
     def test_with_clean_random_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\random_text.txt"
+        file = "path/to/random_file.txt"
         
         expected = '12-01-2022'
         actual = get_mod_date_of_file(file)
