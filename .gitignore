@@ -4,4 +4,6 @@ __pycache__/
 logs/
 plugins/
 .env
-dags/env_dag.py
+new_files/
+processed/
+database/
