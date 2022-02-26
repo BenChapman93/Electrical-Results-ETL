@@ -42,7 +42,7 @@ This ETL process is designed to check for completed test files, extract their co
  
  ### Metabase
  
- Metabase can be ran *via* it official Docker image - run the following command to start a container running Metabase:
+ Metabase can be ran *via* its official Docker image - run the following command to start a container running Metabase:
  
  ```
  docker run -d -p 3000:3000 \
