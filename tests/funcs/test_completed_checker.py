@@ -4,9 +4,9 @@ class TestCompletedChecker(object):
 
     def test_with_clean_salt_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        file = "path/to/clean_salt_file.txt"
         
-        expected = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 1 HRS SALTBJC.txt"
+        expected = "path/to/clean_salt_file.txt"
         actual = completed_checker(file)
         message = f"Expected: {expected}, Actual: {actual}"
 
@@ -14,9 +14,9 @@ class TestCompletedChecker(object):
 
     def test_with_clean_tapwater_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
         
-        expected = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        expected = "path/to/clean_tapwater_file.txt"
         actual = completed_checker(file)
         message = f"Expected: {expected}, Actual: {actual}"
 
@@ -24,7 +24,7 @@ class TestCompletedChecker(object):
 
     def test_with_empty_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\empty_file.txt"
+        file = "path/to/empty_file.txt"
         
         expected = None
         actual = completed_checker(file)
@@ -34,7 +34,7 @@ class TestCompletedChecker(object):
 
     def test_with_clean_random_file(self):
         
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\random_text.txt"
+        file = "path/to/clean_random_file.txt"
         
         expected = None
         actual = completed_checker(file)
@@ -44,7 +44,7 @@ class TestCompletedChecker(object):
 
     def test_with_incomplete_file(self):
             
-            file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\incomplete_file.txt"
+            file = "path/to/incomplete_file.txt"
             
             expected = None
             actual = completed_checker(file)
