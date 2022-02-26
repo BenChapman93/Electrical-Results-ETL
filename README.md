@@ -12,13 +12,45 @@ This ETL process is designed to check for completed test files, extract their co
  
  This project is configured for quite a unique usecase; however, should anyone wish to test its features, these are the steps to do so.
  
+ ### Airflow
+ 
  Clone the repository to your desired location.
  
- Should you wish to alter the location of any directories, such as the 
+ Should you wish to alter the location of any directories, such as the target directory (where new results files land), you can change the mount location in the Compose file ([docker-compose.yaml](https://github.com/BenChapman93/Electrical-Results-ETL/blob/master/docker-compose.yaml)).
+ 
+ In the repository directory, run the following command:
+ ```
+ echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+ ```
+ This will create the .env file containing the Airflow UID and GID needed by docker-compose.
+ 
+ When using for the first time, run the following command to create an Airflow user and initialise an Airflow instance.
+ ```
+ docker-compose up airflow-init
+ ```
+ 
+ To start all Docker containers corresponding to each service within the Compose file, run the following command:
+ 
+ ```
+ docker-compose up
+ ```
+ 
+ ### Metabase
+ 
+ Metabase can be ran *via* it official Docker image - run the following command to start a container running Metabase:
+ 
+ ```
+ docker run -d -p 3000:3000 \
+-v ~/metabase-data:/metabase-data \
+-e "MB_DB_FILE=/metabase-data/metabase.db" \
+-v [HOST-DB-LOCATION]:/metabase-data/electricaldb
+--name metabase metabase/metabase
+```
+ Ensure that `[HOST-DB-LOCATION]` is set to the location (local) of the sqlite database used by the Airflow dag.
  
  ## Airflow Web UI
  
- Below is an example of the DAG (directed acyclic graph) being triggered manually (usually scheduled to run every 15 minutes).
+ Below is an example of the DAG (directed acyclic graph) being triggered manually (scheduled to run every 15 minutes).
  
 ![Airflow gif](https://user-images.githubusercontent.com/45105631/155702416-788043aa-1224-422b-9220-be4b6de20a41.gif)
 
