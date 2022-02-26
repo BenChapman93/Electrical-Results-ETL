@@ -5,7 +5,7 @@ class TestTxtToDf(object):
 
     def test_with_clean_tapwater_file(self):
 
-        file = r"C:\Users\ben.chapman\Desktop\Udemy\Electrical_Results_ETL\mock_files\Complete 13 MIN TAPBJC.txt"
+        file = "path/to/clean_tapwater_file.txt"
 
         expected = True
         actual = isinstance(txt_to_df(file), pd.core.frame.DataFrame)
