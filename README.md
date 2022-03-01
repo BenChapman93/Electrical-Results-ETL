@@ -48,7 +48,7 @@ This ETL process is designed to check for completed test files, extract their co
  docker run -d -p 3000:3000 \
 -v ~/metabase-data:/metabase-data \
 -e "MB_DB_FILE=/metabase-data/metabase.db" \
--v [HOST-DB-LOCATION]:/metabase-data/electricaldb
+-v [HOST-DB-LOCATION]:/metabase-data/electricaldb \
 --name metabase metabase/metabase
 ```
  Ensure that `[HOST-DB-LOCATION]` is set to the location (local) of the sqlite database used by the Airflow dag.
